@@ -1,0 +1,424 @@
+:root {
+    --background: #0b0b0b;
+    --text: #ffffff;
+    --accent: #ffd700;
+    --section-spacing: clamp(2rem, 4vw, 4rem);
+    --item-spacing: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    padding-bottom: 70px; /* Space for fixed bottom nav */
+    -webkit-text-size-adjust: 100%; /* Prevent iOS font scaling */
+}
+
+.menu-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.menu-header {
+    text-align: center;
+    padding: clamp(2rem, 5vw, 4rem) 0;
+}
+
+.menu-header h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    text-transform: lowercase;
+    letter-spacing: -0.02em;
+}
+
+.menu-section {
+    margin-bottom: var(--section-spacing);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.menu-section h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: var(--item-spacing);
+    color: var(--accent);
+    letter-spacing: 0.05em;
+}
+
+.menu-item {
+    margin-bottom: var(--item-spacing);
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.item-header h3 {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 600;
+}
+
+.price {
+    font-size: clamp(1.15rem, 2.5vw, 1.3rem);
+    font-weight: 500;
+}
+
+.price::before {
+    content: '$';
+}
+
+.description {
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    opacity: 0.9;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(11, 11, 11, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-item {
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+    opacity: 1;
+}
+
+.nav-item i {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+    body {
+        padding: 2rem;
+        padding-bottom: 100px;
+    }
+
+    .menu-container {
+        padding: 2rem;
+    }
+
+    .bottom-nav {
+        padding: 1rem;
+    }
+
+    .nav-item {
+        font-size: 0.9rem;
+    }
+
+    .nav-item i {
+        font-size: 1.75rem;
+    }
+}
+
+/* Sides and Add-ons Section */
+.sides-section,
+.addons-section {
+    margin-bottom: 2rem;
+}
+
+.sides-list,
+.addons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.side-item,
+.addon-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+}
+
+.side-item .name,
+.addon-item .name {
+    color: var(--text);
+}
+
+.addon-item .name {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sides-section h3,
+.addons-section h3 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+/* Remove old side-items styles */
+.side-items {
+    display: none;
+}
+
+/* Choice Options */
+.choice-options {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.choice-header {
+    color: var(--accent);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.choices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.choices p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+/* Wings Section */
+.wingz {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-top: 2rem;
+}
+
+.heat-levels {
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.heat-levels p {
+    color: var(--accent);
+}
+
+.wing-flavors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.wing-flavors p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Section Note */
+.section-note {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Price Options */
+.price-options {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.price-options .price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.1rem;
+}
+
+.price-options .size {
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+/* Side Salad */
+.side-salad {
+    padding: 0.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 1rem 0;
+}
+
+.side-salad .item-header {
+    margin-bottom: 0;
+}
+
+/* Menu Item Asterisk */
+.menu-item h3[class*="*"]::after,
+.menu-item h3:has(+ .choice-options)::after {
+    content: "*";
+    color: var(--accent);
+    margin-left: 0.2rem;
+}
+
+/* Section Notes */
+.section-notes {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.section-notes p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.section-notes p:first-child,
+.section-notes p:nth-child(2) {
+    color: var(--accent);
+}
+
+.section-notes p:not(:first-child):not(:nth-child(2)) {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.section-notes p:last-child {
+    margin-bottom: 0;
+}
+
+/* Menu Note */
+.menu-note {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.menu-note p {
+    font-size: 1rem;
+    color: var(--accent);
+    font-style: italic;
+}
+
+/* Featured Menu Item */
+.featured {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin: 2rem 0;
+    border: 1px solid var(--accent);
+}
+
+.featured .sub-note {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-style: italic;
+}
+
+/* Bottom Notes */
+.menu-notes {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.menu-notes p {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.note-left::before {
+    content: "»";
+    margin-right: 0.5rem;
+}
+
+.note-right::after {
+    content: "»";
+    margin-left: 0.5rem;
+}
+
+/* Drinks Section */
+.drinks-section {
+    text-align: center;
+}
+
+.drinks-section .description {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+    max-width: 100%;
+}
+
+.drinks-notes {
+    margin: 2rem 0;
+}
+
+.drinks-notes .warning {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.drinks-notes .highlight {
+    color: var(--accent);
+}
+
+.alcohol-options {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.alcohol-options .options {
+    color: var(--accent);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.server-note {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    margin-top: 1rem;
+} 
