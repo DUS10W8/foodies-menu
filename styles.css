@@ -44,7 +44,7 @@ body {
 
 .menu-section {
     margin-bottom: var(--section-spacing);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid;
     padding: 1.5rem;
     border-radius: 8px;
 }
@@ -91,15 +91,17 @@ body {
 /* Bottom Navigation */
 .bottom-nav {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(11, 11, 11, 0.95);
-    backdrop-filter: blur(10px);
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
     display: flex;
-    justify-content: space-around;
-    padding: 0.75rem 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    backdrop-filter: none;
+    border: none;
+    width: auto;
 }
 
 .nav-item {
@@ -109,18 +111,37 @@ body {
     flex-direction: column;
     align-items: center;
     font-size: 0.8rem;
-    opacity: 0.7;
-    transition: opacity 0.2s;
+    opacity: 1;
+    transition: transform 0.2s, opacity 0.2s;
+    background: var(--background);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0.5rem;
+    justify-content: center;
+}
+
+.nav-item i {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    color: var(--accent);
+}
+
+.nav-item span {
+    display: none;
 }
 
 .nav-item:hover,
 .nav-item:focus {
     opacity: 1;
+    transform: translateY(-5px);
+    background: var(--accent);
 }
 
-.nav-item i {
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
+.nav-item:hover i,
+.nav-item:focus i {
+    color: var(--background) !important;
 }
 
 /* Larger screens */
@@ -136,15 +157,43 @@ body {
 
     .bottom-nav {
         padding: 1rem;
+        gap: 1.5rem;
     }
 
     .nav-item {
-        font-size: 0.9rem;
+        width: 4rem;
+        height: 4rem;
     }
 
     .nav-item i {
         font-size: 1.75rem;
     }
+}
+
+/* Add tooltip for accessibility */
+.nav-item::after {
+    content: attr(aria-label);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--background);
+    color: var(--text);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--accent);
+    border-color: inherit;
+}
+
+.nav-item:hover::after,
+.nav-item:focus::after {
+    opacity: 1;
 }
 
 /* Sides and Add-ons Section */
@@ -421,4 +470,146 @@ body {
     color: rgba(255, 255, 255, 0.7);
     font-style: italic;
     margin-top: 1rem;
+}
+
+/* Navigation Colors */
+.nav-item[aria-label="Munchies"] {
+    border-color: #FFD700;
+}
+
+.nav-item[aria-label="Munchies"] i {
+    color: #FFD700;
+}
+
+.nav-item[aria-label="Munchies"]:hover {
+    background: #FFD700;
+}
+
+.nav-item[aria-label="Greens"] {
+    border-color: #4CAF50;
+}
+
+.nav-item[aria-label="Greens"] i {
+    color: #4CAF50;
+}
+
+.nav-item[aria-label="Greens"]:hover {
+    background: #4CAF50;
+}
+
+.nav-item[aria-label="Hand Helds"] {
+    border-color: #FF6B6B;
+}
+
+.nav-item[aria-label="Hand Helds"] i {
+    color: #FF6B6B;
+}
+
+.nav-item[aria-label="Hand Helds"]:hover {
+    background: #FF6B6B;
+}
+
+.nav-item[aria-label="Burgers"] {
+    border-color: #FF4136;
+}
+
+.nav-item[aria-label="Burgers"] i {
+    color: #FF4136;
+}
+
+.nav-item[aria-label="Burgers"]:hover {
+    background: #FF4136;
+}
+
+.nav-item[aria-label="Baskets"] {
+    border-color: #B10DC9;
+}
+
+.nav-item[aria-label="Baskets"] i {
+    color: #B10DC9;
+}
+
+.nav-item[aria-label="Baskets"]:hover {
+    background: #B10DC9;
+}
+
+.nav-item[aria-label="Drinks & Add-Ons"] {
+    border-color: #0074D9;
+}
+
+.nav-item[aria-label="Drinks & Add-Ons"] i {
+    color: #0074D9;
+}
+
+.nav-item[aria-label="Drinks & Add-Ons"]:hover {
+    background: #0074D9;
+}
+
+/* Update hover states for all nav items */
+.nav-item:hover i,
+.nav-item:focus i {
+    color: var(--background) !important;
+}
+
+/* Update tooltip border colors to match their buttons */
+.nav-item::after {
+    border-color: inherit;
+}
+
+/* Section border colors matching navigation */
+#munchies,
+#chili {
+    border-color: #FFD700;
+}
+
+#greens {
+    border-color: #4CAF50;
+}
+
+#sandwiches,
+#tacos {
+    border-color: #FF6B6B;
+}
+
+#burgers {
+    border-color: #FF4136;
+}
+
+#baskets,
+#dogs {
+    border-color: #B10DC9;
+}
+
+#drinks,
+#sides {
+    border-color: #0074D9;
+}
+
+/* Make section headers match their border colors */
+#munchies h2,
+#chili h2 { 
+    color: #FFD700; 
+}
+
+#greens h2 { 
+    color: #4CAF50; 
+}
+
+#sandwiches h2,
+#tacos h2 { 
+    color: #FF6B6B; 
+}
+
+#burgers h2 { 
+    color: #FF4136; 
+}
+
+#baskets h2,
+#dogs h2 { 
+    color: #B10DC9; 
+}
+
+#drinks h2,
+#sides h2 { 
+    color: #0074D9; 
 } 
