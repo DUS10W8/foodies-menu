@@ -52,8 +52,13 @@ body {
 .menu-section h2 {
     font-size: clamp(1.5rem, 4vw, 2rem);
     margin-bottom: var(--item-spacing);
-    color: var(--accent);
-    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.menu-section h2 i {
+    font-size: 0.9em;
 }
 
 .menu-item {
@@ -611,5 +616,34 @@ body {
 
 #drinks h2,
 #sides h2 { 
+    color: #0074D9; 
+}
+
+/* Inherit section colors for icons */
+#munchies h2 i,
+#chili h2 i { 
+    color: #FFD700; 
+}
+
+#greens h2 i { 
+    color: #4CAF50; 
+}
+
+#sandwiches h2 i,
+#tacos h2 i { 
+    color: #FF6B6B; 
+}
+
+#burgers h2 i { 
+    color: #FF4136; 
+}
+
+#baskets h2 i,
+#dogs h2 i { 
+    color: #B10DC9; 
+}
+
+#drinks h2 i,
+#sides h2 i { 
     color: #0074D9; 
 } 
